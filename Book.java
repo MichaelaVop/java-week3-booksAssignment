@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 
 public class Book {
 	
@@ -5,6 +6,8 @@ public class Book {
 	private String firstName;
 	private String lastName;
 	private int yearPublished;
+	private double price;
+	
 	
 	public Book(String title, String fName, String lName, int year) {
 		if (title == "") {
@@ -26,9 +29,23 @@ public class Book {
 			yearPublished = 1900;
 		} else {
 			yearPublished = year;
-		}
-		
+		}	
 	}
+	
+	
+	
+	public double getTotalPrice() {
+		this.price = (price * 1.05);
+		DecimalFormat totalTwo = new DecimalFormat("#.##");
+		return Double.valueOf(totalTwo.format(price).replace(',', '.'));
+	}
+	
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
+	
+	
 	
 	public String getTitle() {
 		return bookTitle;
@@ -45,6 +62,7 @@ public class Book {
 	public int getYear() {
 		return yearPublished;
 	}
+	
 	
 	public void setTitle(String title) {
 			bookTitle = title;
